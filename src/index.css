@@ -1,9 +1,37 @@
 :root {
   --background-color: black;
   --text-color: white;
-  --font-family: "Roboto", sans-serif;
+  --secondary-color: #212121;
+  --panel-color: #2e3131;
 
   background-color: var(--background-color);
   color: var(--text-color);
-  font-family: var(--font-family);
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  letter-spacing: 0.2pt;
+  font-weight: 700;
+}
+
+.icon-button {
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  font-size: 20px;
+  line-height: 20px;
+  border: none;
 }
