@@ -1,0 +1,38 @@
+.recording {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+  max-width: calc(100% - 4rem);
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--panel-color);
+  width: 100%;
+  padding: 20px 24px 24px 24px;
+  border-radius: 28px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pill {
+  background-color: var(--secondary-color);
+  padding: 8px 12px;
+  margin-left: -4px;
+  margin-right: 12px;
+  border-radius: 32px;
+}
+.pill.highlight {
+  background-color: var(--text-color);
+  color: var(--background-color);
+  padding: 6px 10px;
+  margin-right: 14px;
+}
