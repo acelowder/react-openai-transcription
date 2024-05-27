@@ -9,8 +9,10 @@ main {
 header {
   display: flex;
   align-items: center;
-  justify-content: end;
-  padding: 1rem 1rem;
+  justify-content: space-between;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 20px 0;
 }
 
 .title {

@@ -1,7 +1,4 @@
-import { Card } from "./components/Card";
-import { FaRotateLeft } from "react-icons/fa6";
-import { FaMicrophone } from "react-icons/fa";
-import { FaFileUpload } from "react-icons/fa";
+import { FaPlus, FaMicrophone } from "react-icons/fa";
 
 import "./App.css";
 
@@ -11,30 +8,19 @@ export default function App() {
   return (
     <>
       <header>
-        <button className="icon-button">
-          <FaRotateLeft />
+        <h2>
+          Sound<span>Scribe</span>
+        </h2>
+        <button>
+          <h3>New</h3> <FaPlus />
         </button>
       </header>
       <main>
-        <div className="recording">
-          <div className="title">
-            <h1>SoundScribe</h1>
-            <h2>
-              Record {arrow} Transcribe {arrow} Translate
-            </h2>
-          </div>
-          <Card
-            pills={[{ text: "Duration", highlight: true }, { text: "MP3" }]}
-            buttonIcon={<FaMicrophone />}
-          >
-            Record your voice
-          </Card>
-          <Card
-            pills={[{ text: "MP3" }, { text: "WAV" }]}
-            buttonIcon={<FaFileUpload />}
-          >
-            Upload a file
-          </Card>
+        <div className="title">
+          <h1>SoundScribe</h1>
+          <h2>
+            Record {arrow} Transcribe {arrow} Translate
+          </h2>
         </div>
       </main>
     </>
