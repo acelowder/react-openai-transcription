@@ -1,8 +1,10 @@
 :root {
   --background-color: black;
   --text-color: white;
-  --primary-color: #9cacff;
-  --secondary-color: #212121;
+  --primary-color: #ffcc90;
+  --secondary-color: #9cacff;
+  --secondary-highlight: #5a68e1;
+  --disabled: #212121;
   --panel-color: #2e3131;
 
   background-color: var(--background-color);
@@ -19,7 +21,7 @@
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
 h2 {
@@ -30,6 +32,16 @@ h2 {
 
 span {
   color: var(--primary-color);
+}
+
+label {
+  color: var(--secondary-color);
+  transition: color 0.1s;
+}
+
+label:hover {
+  color: var(--secondary-highlight);
+  text-decoration: underline;
 }
 
 button {
@@ -45,4 +57,13 @@ button {
 
 button:hover {
   opacity: 1;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12rem;
 }

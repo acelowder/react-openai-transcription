@@ -16,12 +16,28 @@ export default function App() {
         </button>
       </header>
       <main>
-        <div className="title">
-          <h1>SoundScribe</h1>
-          <h2>
-            Record {arrow} Transcribe {arrow} Translate
-          </h2>
-        </div>
+        <section>
+          <div className="title">
+            <h1>
+              Sound<span>Scribe</span>
+            </h1>
+            <h2>
+              Record {arrow} Transcribe {arrow} Translate
+            </h2>
+          </div>
+          <button className="record-button">
+            <h3>Record</h3>
+            <FaMicrophone />
+          </button>
+          <h3>
+            Or{" "}
+            <label>
+              upload
+              <input hidden={true} type="file" accept=".mp3, .wav" />
+            </label>{" "}
+            an audio file
+          </h3>
+        </section>
       </main>
     </>
   );
