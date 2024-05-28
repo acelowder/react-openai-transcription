@@ -6,17 +6,6 @@ main {
   min-height: 100vh;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 1000px;
-  max-width: calc(100% - 80px);
-  margin: 0 auto;
-  padding: 20px 0;
-  gap: 32px;
-}
-
 .title {
   display: flex;
   align-items: center;

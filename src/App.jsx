@@ -1,7 +1,8 @@
 import { useState } from "react";
+
+import { Header } from "./components/Header";
 import { Recording } from "./components/Recording";
 import { FileDisplay } from "./components/FileDisplay";
-import { FaPlus } from "react-icons/fa";
 
 import "./App.css";
 
@@ -11,15 +12,7 @@ export default function App() {
 
   return (
     <>
-      <header>
-        <h2>
-          Sound<span>Scribe</span>
-        </h2>
-        <button>
-          <h3>New</h3>
-          <FaPlus />
-        </button>
-      </header>
+      <Header />
       <main>
         <Recording
           onUpload={(e) => setFile(e.target.files[0])}
