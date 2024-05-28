@@ -2,10 +2,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 240px;
   background: var(--panel-color);
-  border-radius: 32px;
-  border: none;
   color: var(--text-color);
+  border: none;
+  width: 240px;
   padding: 1rem 1.5rem;
+  border-radius: 32px;
+}
+
+.record-visuals {
+  display: flex;
+  align-items: start;
+  gap: 8px;
 }

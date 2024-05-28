@@ -6,35 +6,38 @@ main {
   min-height: 100vh;
 }
 
-.title {
+header {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  padding: 0 4px;
-  gap: 8px;
-  margin-bottom: 16px;
+  justify-content: space-between;
+  width: 1000px;
+  max-width: calc(100% - 80px);
+  margin: 0 auto;
+  padding: 20px 0;
+  gap: 32px;
 }
 
-.card {
+section {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  width: 400px;
-  background: var(--panel-color);
-  padding: 1.5em 1.5em;
-  border-radius: 16px;
-  gap: 16px;
-}
-
-.card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.card-footer {
-  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 32px;
-  margin-left: 16px;
+  width: 400px;
+  gap: 16px;
+  margin-bottom: 12rem;
+  transition: opacity 0.3s ease-in-out, transform 1s ease-in;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translate(-50%, 100%);
+  pointer-events: none;
+}
+
+.fade-in {
+  transition: opacity 0.3s 0.3s ease-in-out;
 }

@@ -4,6 +4,8 @@
   --primary-color: #ffcc90;
   --secondary-color: #9cacff;
   --secondary-highlight: #5a68e1;
+  --action-color: #f894c4;
+  --action-highlight: #d45592;
   --disabled: #212121;
   --panel-color: #2e3131;
 
@@ -30,12 +32,20 @@ h2 {
   font-weight: 700;
 }
 
-span {
+.primary {
   color: var(--primary-color);
 }
 
-span.secondary {
+.secondary {
   color: var(--secondary-color);
+}
+
+.action {
+  color: var(--action-color);
+}
+
+.action-hightlight {
+  color: var(--action-highlight);
 }
 
 label {
@@ -75,27 +85,16 @@ button.secondary:hover {
   background-color: var(--secondary-color);
 }
 
-section {
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translateX(-50%);
+.title {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 400px;
-  gap: 16px;
-  margin-bottom: 12rem;
-  transition: opacity 0.3s ease-in-out, transform 1s ease-in;
+  flex-direction: column;
+  padding: 0 4px;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
-.hidden {
-  opacity: 0;
-  transform: translate(-50%, 100%);
-  pointer-events: none;
-}
-
-.fade-in {
-  transition: opacity 0.3s 0.3s ease-in-out;
+.icon {
+  display: flex;
+  height: fit-content;
 }

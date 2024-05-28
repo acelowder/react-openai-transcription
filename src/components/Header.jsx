@@ -1,4 +1,3 @@
-import "./Header.css";
 import { FaPlus } from "react-icons/fa";
 
 export function Header() {
@@ -6,11 +5,13 @@ export function Header() {
     <>
       <header>
         <h2>
-          Sound<span>Scribe</span>
+          Sound<span className="primary">Scribe</span>
         </h2>
         <button>
           <h3>New</h3>
-          <FaPlus />
+          <h4 className="icon">
+            <FaPlus />
+          </h4>
         </button>
       </header>
     </>

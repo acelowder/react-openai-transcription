@@ -1,3 +1,5 @@
+import "./FileDisplay.css";
+
 export function FileDisplay({ onReset, file, recording }) {
   return (
     <section className={file || recording ? "fade-in" : "hidden"}>

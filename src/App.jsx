@@ -15,6 +15,7 @@ export default function App() {
       <Header />
       <main>
         <Recording
+          setRecording={setRecording}
           onUpload={(e) => setFile(e.target.files[0])}
           file={file}
           recording={recording}
