@@ -6,7 +6,7 @@ export function Recording({ onRecord, onUpload, file, recording }) {
   console.log(file, recording);
 
   return (
-    <section className={file || recording ? "fade-out" : ""}>
+    <section className={file || recording ? "hidden" : "fade-in"}>
       <div className="title">
         <h1>
           Sound<span>Scribe</span>
@@ -23,12 +23,14 @@ export function Recording({ onRecord, onUpload, file, recording }) {
         Or{" "}
         <label>
           upload
-          <input
-            hidden={true}
-            type="file"
-            accept=".mp3, .wav"
-            onChange={onUpload}
-          />
+          {!file && (
+            <input
+              hidden={true}
+              type="file"
+              accept=".mp3, .wav"
+              onChange={onUpload}
+            />
+          )}
         </label>{" "}
         an audio file
       </h3>

@@ -23,3 +23,27 @@ header {
   gap: 8px;
   margin-bottom: 16px;
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background: var(--panel-color);
+  padding: 1.5em 1.5em;
+  border-radius: 16px;
+  gap: 16px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin-left: 16px;
+}
