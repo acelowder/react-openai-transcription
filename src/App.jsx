@@ -1,9 +1,12 @@
-import { FaPlus, FaMicrophone } from "react-icons/fa";
+import { useState } from "react";
+import { Recording } from "./components/Recording";
+import { FaPlus } from "react-icons/fa";
 
 import "./App.css";
 
 export default function App() {
-  const arrow = <b style={{ fontWeight: 1000 }}>&rarr;</b>;
+  const [file, setFile] = useState(null);
+  const [recording, setRecording] = useState(null);
 
   return (
     <>
@@ -12,32 +15,16 @@ export default function App() {
           Sound<span>Scribe</span>
         </h2>
         <button>
-          <h3>New</h3> <FaPlus />
+          <h3>New</h3>
+          <FaPlus />
         </button>
       </header>
       <main>
-        <section>
-          <div className="title">
-            <h1>
-              Sound<span>Scribe</span>
-            </h1>
-            <h2>
-              Record {arrow} Transcribe {arrow} Translate
-            </h2>
-          </div>
-          <button className="record-button">
-            <h3>Record</h3>
-            <FaMicrophone />
-          </button>
-          <h3>
-            Or{" "}
-            <label>
-              upload
-              <input hidden={true} type="file" accept=".mp3, .wav" />
-            </label>{" "}
-            an audio file
-          </h3>
-        </section>
+        <Recording
+          onUpload={(e) => setFile(e.target.files[0])}
+          file={file}
+          recording={recording}
+        />
       </main>
     </>
   );
