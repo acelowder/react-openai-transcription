@@ -3,12 +3,15 @@ import { useState } from "react";
 import { Header } from "./components/Header";
 import { Recording } from "./components/Recording";
 import { FileDisplay } from "./components/FileDisplay";
+import { Transcription } from "./components/Transcription";
 
 import "./App.css";
 
 export default function App() {
   const [file, setFile] = useState(null);
   const [recording, setRecording] = useState(null);
+
+  const [loading, setLoading] = useState(false);
 
   return (
     <>
@@ -27,7 +30,10 @@ export default function App() {
           }}
           file={file}
           recording={recording}
+          onTranscribe={() => setLoading(true)}
+          loading={loading}
         />
+        <Transcription loading={loading} />
       </main>
     </>
   );

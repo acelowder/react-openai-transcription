@@ -6,6 +6,8 @@
   --secondary-highlight: #5a68e1;
   --action-color: #f894c4;
   --action-highlight: #d45592;
+  --success-color: #80d8b8;
+  --success-highlight: #34a179;
   --disabled: #212121;
   --panel-color: #2e3131;
 
@@ -46,6 +48,14 @@ h2 {
 
 .action-hightlight {
   color: var(--action-highlight);
+}
+
+.success {
+  color: var(--success-color);
+}
+
+.success-hightlight {
+  color: var(--success-highlight);
 }
 
 label {
