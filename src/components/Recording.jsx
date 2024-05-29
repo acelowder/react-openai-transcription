@@ -7,44 +7,31 @@ export function Recording({ setRecording, onUpload, file, recording }) {
   const [audioChunks, setAudioChunks] = useState([]);
   const [duration, setDuration] = useState(0);
 
-  const mediaRecorder = useRef(null);
+  const mediaRecorderRef = useRef(null);
 
-  const startRecording = async () => {
-    let tempStream;
-
-    console.log("Recording...");
-
-    try {
-      const streamData = navigator.mediaDevices.getUserMedia({
-        audio: true,
-        video: false,
-      });
-      tempStream = await streamData;
-    } catch (err) {
-      console.log(err);
-    }
+  const startRecordingHandler = async () => {
     setIsRecording(true);
 
-    const media = new MediaRecorder(tempStream, { type: "audio/webm" });
-    mediaRecorder.current = media;
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: false,
+    });
+    const media = new MediaRecorder(stream, { type: "audio/webm" });
+    mediaRecorderRef.current = media;
 
-    mediaRecorder.current.start();
-    let localAudioChunks = [];
-    mediaRecorder.current.ondataavailable = (event) => {
-      if (typeof event.data === "undefined") return;
+    mediaRecorderRef.current.start();
+    const localAudioChunks = [];
+    mediaRecorderRef.current.ondataavailable = (event) => {
       if (event.data.size === 0) return;
-
       localAudioChunks.push(event.data);
     };
     setAudioChunks(localAudioChunks);
   };
 
-  const stopRecording = async () => {
+  const stopRecordingHandler = () => {
     setIsRecording(false);
-    console.log("Recording stopped");
-
-    mediaRecorder.current.stop();
-    mediaRecorder.current.onstop = () => {
+    mediaRecorderRef.current.stop();
+    mediaRecorderRef.current.onstop = () => {
       const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
       setRecording(audioBlob);
       setAudioChunks([]);
@@ -55,19 +42,17 @@ export function Recording({ setRecording, onUpload, file, recording }) {
   useEffect(() => {
     if (!isRecording) return;
 
-    const interval = setInterval(() => {
-      setDuration((prev) => prev + 1);
-    }, 1000);
+    const intervalId = setInterval(() => setDuration((prev) => prev + 1), 1000);
 
-    return () => clearInterval(interval);
-  });
+    return () => clearInterval(intervalId);
+  }, [isRecording]);
 
   const arrow = <b style={{ fontWeight: 1000 }}>&rarr;</b>;
 
   return (
     <section className={file || recording ? "hidden" : "fade-in"}>
       <div className="title">
-        <h1>
+        <h1 className="test">
           Sound<span className="primary">Scribe</span>
         </h1>
         <h2>
@@ -76,11 +61,11 @@ export function Recording({ setRecording, onUpload, file, recording }) {
       </div>
       <button
         className="record-button"
-        onClick={isRecording ? stopRecording : startRecording}
+        onClick={isRecording ? stopRecordingHandler : startRecordingHandler}
       >
         <h3>{isRecording ? "Stop Recording" : "Record"}</h3>
         <div className="record-visuals">
-          {isRecording && <p>{duration}</p>}
+          {isRecording && <p>{duration}s</p>}
           <h3 className="">
             <span className={`icon ${isRecording ? "action-hightlight" : ""}`}>
               <FaMicrophone />

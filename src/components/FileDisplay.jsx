@@ -11,7 +11,7 @@ export function FileDisplay({ onReset, file, recording }) {
       <div className="card">
         <div className="card-content">
           <h3>Name</h3>
-          <p>{file ? file.name : "---"}</p>
+          <p>{file ? file.name : recording ? "Custom Audio" : "---"}</p>
         </div>
         <div className="card-footer">
           <button onClick={onReset}>
