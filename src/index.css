@@ -108,3 +108,8 @@ button.secondary:hover {
   display: flex;
   height: fit-content;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
