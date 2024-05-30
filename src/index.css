@@ -95,6 +95,18 @@ button.secondary:hover {
   background-color: var(--secondary-color);
 }
 
+button.action {
+  background-color: var(--text-color);
+  color: var(--panel-color);
+  padding: 4px 12px;
+  border-radius: 8px;
+  opacity: 1;
+}
+
+button.action:hover {
+  background-color: var(--action-color);
+}
+
 .title {
   display: flex;
   align-items: center;

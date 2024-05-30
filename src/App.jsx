@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Header } from "./components/Header";
 import { Recording } from "./components/Recording";
 import { FileDisplay } from "./components/FileDisplay";
-import { Transcription } from "./components/Transcription";
+import { Information } from "./components/Information";
 
 import { MessageTypes } from "./utils/presets";
 
@@ -29,17 +29,11 @@ export default function App() {
     }
 
     const onMessageReceived = (e) => {
-      switch (e.data.type) {
-        case MessageTypes.RESULT:
-          setTranscription(e.data.results);
-          console.log(e.data.results);
-          break;
-        case MessageTypes.INFERENCE_DONE:
-        case MessageTypes.DOWNLOADING:
-        case MessageTypes.LOADING:
-        default:
-          setLoading(true);
-          break;
+      if (e.data.type === MessageTypes.RESULT) {
+        setTranscription(e.data.results);
+        console.log(e.data.results);
+      } else {
+        setLoading(true);
       }
     };
 
@@ -87,7 +81,7 @@ export default function App() {
           onTranscribe={handleFormSubmission}
           loading={loading}
         />
-        <Transcription loading={loading} transcription={transcription} />
+        <Information loading={loading} transcription={transcription} />
       </main>
     </>
   );

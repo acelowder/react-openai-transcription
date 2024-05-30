@@ -5,7 +5,7 @@ import { env } from "@xenova/transformers";
 env.allowLocalModels = false;
 env.useBrowserCache = false;
 
-class MyTranscriptionPipeline {
+class TranscriptionPipeline {
   static instance = null;
 
   static async getInstance() {
@@ -27,7 +27,7 @@ async function transcribeAudio(audio) {
   postMessage({ type: MessageTypes.DOWNLOADING });
 
   let transcriptionPipeline;
-  transcriptionPipeline = await MyTranscriptionPipeline.getInstance();
+  transcriptionPipeline = await TranscriptionPipeline.getInstance();
 
   const stride_length_s = 5;
   const generationTracker = new GenerationTracker(

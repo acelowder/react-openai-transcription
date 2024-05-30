@@ -1,0 +1,48 @@
+.translation {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.language-select {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 24px;
+}
+
+select {
+  flex: 1;
+  color: var(--text-color);
+  background-color: var(--panel-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border-right: 16px solid transparent;
+}
+
+.spinning {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  width: 100%;
+  height: 100%;
+  color: var(--text-color);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
