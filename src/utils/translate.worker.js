@@ -5,14 +5,14 @@ import { MessageTypes } from "./presets";
 env.allowLocalModels = false;
 env.useBrowserCache = false;
 
-class MyTranslationPipeline {
+class TranslationPipeline {
   static task = "translation";
   static model = "Xenova/nllb-200-distilled-600M";
   static instance = null;
 
-  static async getInstance(progress_callback = null) {
+  static async getInstance() {
     if (this.instance === null) {
-      this.instance = pipeline(this.task, this.model, { progress_callback });
+      this.instance = pipeline(this.task, this.model);
     }
 
     return this.instance;
@@ -20,25 +20,13 @@ class MyTranslationPipeline {
 }
 
 self.addEventListener("message", async (event) => {
-  let translator = await MyTranslationPipeline.getInstance((x) => {
-    self.postMessage(x);
-  });
-  console.log(event.data);
+  let translator;
+  translator = await TranslationPipeline.getInstance();
+
   let output = await translator(event.data.text, {
     tgt_lang: event.data.target_language,
     src_lang: event.data.source_language,
-
-    callback_function: (x) => {
-      self.postMessage({
-        status: "update",
-        output: translator.tokenizer.decode(x[0].output_token_ids, {
-          skip_special_tokens: true,
-        }),
-      });
-    },
   });
-
-  console.log("HEHEHHERERE", output);
 
   self.postMessage({
     type: MessageTypes.RESULT,
