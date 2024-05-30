@@ -1,8 +1,9 @@
 import { useEffect, useState, useRef } from "react";
-import "./Information.css";
 import { Transcription } from "./Transcription";
 import { Translation } from "./Translation";
 import { MessageTypes } from "../utils/presets";
+import { FaCopy, FaDownload } from "react-icons/fa";
+import "./Information.css";
 
 export function Information({ loading, transcription }) {
   const [tab, setTab] = useState(0);
@@ -40,15 +41,33 @@ export function Information({ loading, transcription }) {
   });
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(transcription.text);
+    if (tab === 0) {
+      navigator.clipboard.writeText(
+        transcription?.map((t) => t.text).join("\n")
+      );
+    } else {
+      navigator.clipboard.writeText(
+        translation?.map((t) => t.translation_text).join("\n")
+      );
+    }
   };
 
   const handleDownload = () => {
-    const blob = new Blob([transcription], { type: "text/plain" });
+    let text;
+    let filename = new Date().toISOString().slice(0, 10);
+    if (tab === 0) {
+      text = transcription?.map((t) => t.text).join("\n");
+      filename = "transcription_" + filename + ".txt";
+    } else {
+      text = translation?.map((t) => t.translation_text).join("\n");
+      filename = "translation_" + filename + ".txt";
+    }
+
+    const blob = new Blob([text], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "transcription.txt";
+    link.download = filename;
     link.click();
     URL.revokeObjectURL(url);
   };
@@ -109,8 +128,17 @@ export function Information({ loading, transcription }) {
           />
         )}
         <div className="toolbar">
-          <button onClick={handleCopy}>Copy</button>
-          <button onClick={handleDownload}>Download</button>
+          <button onClick={handleCopy}>
+            <h3>
+              <FaCopy />
+            </h3>
+          </button>
+          <p> </p>
+          <button onClick={handleDownload}>
+            <h3>
+              <FaDownload />
+            </h3>
+          </button>
         </div>
       </div>
     </section>
